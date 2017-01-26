@@ -5,7 +5,7 @@
 <head>
 <!-- <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"> -->
 <title>Insert title here</title>
-<%@ include file="/WebContent/WEB-INF/jspf/head.jspf"%>
+<%@ include file="/WEB-INF/jspf/head.jspf"%>
 </head>
 <body>
 
@@ -18,7 +18,7 @@
 		<div class="col-xs-3">
 			<label for="ex2"><fmt:message
 					key="become_enrollee_form.become_enrollee.city" /></label> <input
-				class="form-control" type="text" name="city">
+				class="form-control" type="text" name="city" >
 		</div>
 		<div class="col-xs-3">
 			<label for="ex2"><fmt:message
@@ -30,8 +30,8 @@
 	</form>
 
 
-	<%@ include file="/WebContent/WEB-INF/jspf/header.jspf"%>
+	<%@ include file="/WEB-INF/jspf/header.jspf"%>
 	
-	<%@ include file="/WebContent/WEB-INF/jspf/LogOut.jspf"%>
+	<%@ include file="/WEB-INF/jspf/LogOut.jspf"%>
 </body>
 </html>

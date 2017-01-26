@@ -2,8 +2,8 @@
     pageEncoding="ISO-8859-1"%>
         <%@ page import="ua.training.dao.impl.DAOFactoryImpl"%>
 <%@ page import="ua.training.dao.EnrolleeDAO"%>
-<%@ include file="/WebContent/WEB-INF/jspf/directive/page.jspf"%>
-<%@ include file="/WebContent/WEB-INF/jspf/directive/taglib.jspf"%>
+<%@ include file="/WEB-INF/jspf/directive/page.jspf"%>
+<%@ include file="/WEB-INF/jspf/directive/taglib.jspf"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>

@@ -15,26 +15,26 @@ public class MysqlConnection {
     private static final String USERNAME = "root";
     private static final String PASSWORD = "root";
     private static final String ASTERIX = "*";
+    private static Connection connection;
 
-    public Connection getConnection() {
-        Connection conn = null;
+    public static void getConnection() {
+        connection = null;
         try {
-            conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return conn;
     }
 
-    public void getResult(final String whatItem, final String fromTable) throws SQLException {
+    public static void getResult(final String whatItem, final String fromTable) throws SQLException {
         LOG.info("Connecting to database...");
-        Connection conn = getConnection();
+        getConnection();
         LOG.info("Connect success");
         String what = StringUtils.isEmpty(whatItem) ? ASTERIX : whatItem;
-        String from = StringUtils.isEmpty(fromTable)? "role_type":fromTable;
+        String tableName = StringUtils.isEmpty(fromTable)? "role_type":fromTable;
         try {
-            Statement stmt = conn.createStatement();
-            stmt.execute("SELECT whatItem FROM fromTable");
+            Statement stmt = connection.createStatement();
+            stmt.execute("SELECT what FROM tableName");
             ResultSet result = stmt.getResultSet();
             while (result.next()) {
                 System.out.println("index: " + result.getString(1) + " role_type: " + result.getString(2));
@@ -42,7 +42,11 @@ public class MysqlConnection {
         } catch (Exception e) {
             e.getStackTrace();
         }
-        conn.close();
+        connection.close();
+    }
+
+    public static void main(String[] args) throws SQLException {
+        getResult("","");
     }
 
 }

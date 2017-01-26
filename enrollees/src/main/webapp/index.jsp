@@ -1,13 +1,13 @@
 <%--  <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>  --%>
-    <%@ include file="/WebContent/WEB-INF/jspf/directive/taglib.jspf"%>
+    <%@ include file="/WEB-INF/jspf/directive/taglib.jspf"%>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <!-- <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"> -->
 <title>Insert title here</title>
-<%@ include file="/WebContent/WEB-INF/jspf/head.jspf"%>
+<%@ include file="/WEB-INF/jspf/head.jspf"%>
 <c:set var="title" scope="request" value="Login"/>
 </head>
 <body>
@@ -21,12 +21,12 @@
 		<input type="hidden" name="command" value="login"/>
 		<div class="form-group">
 			<label for="usr"><fmt:message key="login.login" /></label> <input
-				type="text" class="form-control" name="login">
+				type="text" class="form-control" name="login" id="usr">
 		</div>
 
 		<div class="form-group">
 			<label for="pwd"><fmt:message key="login.password" /></label> <input
-				type="password" class="form-control" name="password">
+				type="password" class="form-control" name="password" id="pwd">
 		</div>
 
 
@@ -44,7 +44,7 @@
 	</form>
 
 
-	<%@ include file="/WebContent/WEB-INF/jspf/header.jspf"%>
+	<%@ include file="/WEB-INF/jspf/header.jspf"%>
 </center>
 </body>
 </html>

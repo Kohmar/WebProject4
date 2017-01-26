@@ -2,8 +2,8 @@
     pageEncoding="UTF-8"%>  --%>
 <%@ page import="ua.training.dao.impl.DAOFactoryImpl"%>
 <%@ page import="ua.training.dao.UserDAO"%>
-<%@ include file="/WebContent/WEB-INF/jspf/directive/page.jspf"%>
-<%@ include file="/WebContent/WEB-INF/jspf/directive/taglib.jspf"%>
+<%@ include file="/WEB-INF/jspf/directive/page.jspf"%>
+<%@ include file="/WEB-INF/jspf/directive/taglib.jspf"%>
 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -13,8 +13,8 @@
 <head>
 <!-- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">  -->
 <title>Insert title here</title>
-<%@ include file="/WebContent/WEB-INF/jspf/head.jspf"%>
-<%@ include file="/WebContent/WEB-INF/jspf/LogOut.jspf"%>
+<%@ include file="/WEB-INF/jspf/head.jspf"%>
+<%@ include file="/WEB-INF/jspf/LogOut.jspf"%>
 
 </head>
 <body>
@@ -102,7 +102,7 @@
 		</c:forEach>
 
 	</table>
-	<%@ include file="/WebContent/WEB-INF/jspf/header.jspf"%>
+	<%@ include file="/WEB-INF/jspf/header.jspf"%>
 
 </body>
 </html>

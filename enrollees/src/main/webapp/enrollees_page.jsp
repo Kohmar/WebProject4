@@ -7,8 +7,8 @@
 <!-- <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"> -->
 <title>Insert title here</title>
 
-<%@ include file="/WebContent/WEB-INF/jspf/head.jspf"%>
-<%@ include file="/WebContent/WEB-INF/jspf/LogOut.jspf"%>
+<%@ include file="/WEB-INF/jspf/head.jspf"%>
+<%@ include file="/WEB-INF/jspf/LogOut.jspf"%>
 
 </head>
 <body>
@@ -25,6 +25,6 @@
 	</form>
 
 
-	<%@ include file="/WebContent/WEB-INF/jspf/header.jspf"%>
+	<%@ include file="/WEB-INF/jspf/header.jspf"%>
 </body>
 </html>

@@ -5,8 +5,8 @@
 <head>
 <!-- <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"> -->
 <title>Insert title here</title>
-<%@ include file="/WebContent/WEB-INF/jspf/head.jspf"%>
-<%@ include file="/WebContent/WEB-INF/jspf/LogOut.jspf"%>
+<%@ include file="WEB-INF/jspf/head.jspf"%>
+<%@ include file="WEB-INF/jspf/LogOut.jspf"%>
 </head>
 <body>
 
@@ -22,7 +22,7 @@
 			<label class="col-sm-2 control-label" for="inputSuccess"><fmt:message
 					key="faculties_page.name_of_faculty" /></label>
 			<div class="col-sm-10">
-				<input type="text" class="form-control" id="inputSuccess"
+				<input type="text" class="form-control" id="inputSuccess1"
 					name="nameOfFaculty"> <span
 					class="glyphicon glyphicon-ok form-control-feedback"></span>
 			</div>
@@ -31,7 +31,7 @@
 			<label class="col-sm-2 control-label" for="inputSuccess"><fmt:message
 					key="faculties_page.total_seats" /></label>
 			<div class="col-sm-10">
-				<input type="text" class="form-control" id="inputSuccess"
+				<input type="text" class="form-control" id="inputSuccess2"
 					name="totalSeats"> <span
 					class="glyphicon glyphicon-ok form-control-feedback"></span>
 			</div>
@@ -109,6 +109,6 @@
 		<input type="submit" class="btn btn-info" value="Add">
 	</form>
 
-	<%@ include file="/WebContent/WEB-INF/jspf/header.jspf"%>
+	<%@ include file="WEB-INF/jspf/header.jspf"%>
 </body>
 </html>

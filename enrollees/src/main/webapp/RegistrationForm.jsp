@@ -5,7 +5,7 @@
 <head>
 <!-- <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"> -->
 <title>Insert title here</title>
-<%@ include file="/WebContent/WEB-INF/jspf/head.jspf"%>
+<%@ include file="/WEB-INF/jspf/head.jspf"%>
 </head>
 <body>
 
@@ -55,7 +55,7 @@
 		
 		<div class="form-group row">
 		<!-- <div class="col-xs-3"> -->
-			<label for="inputLogin3" class="col-sm-2 col-form-label"><fmt:message
+			<label for="inputLogin3" class="col-sm-2 col-form-label" id="inputLogin3"><fmt:message
 					key="registration_form.input.login" /></label>
 					<div class="col-sm-10">
 					<input class="form-control"
@@ -71,7 +71,7 @@
 					key="registration_form.input.password" /></label>
 					 <div class="col-sm-10">
 					 <input
-				class="form-control" type="password" name="password"/>
+				class="form-control" type="password" name="password" id="inputPassword3"/>
 					</div>
 		<!-- </div> -->
 		</div>
@@ -82,7 +82,7 @@
 		</div> 
 	</form>
 	</div>
-	<%@ include file="/WebContent/WEB-INF/jspf/header.jspf"%>
+	<%@ include file="/WEB-INF/jspf/header.jspf"%>
 
 </body>
 </html>
