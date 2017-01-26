@@ -19,7 +19,5 @@ Custom tag library.
 	value="${not empty lang ? lang : pageContext.request.locale.language}"
 	scope="session" />
 <fmt:setLocale value="${language}" />
-<fmt:setBundle basename="resources" />
+<fmt:setBundle basename="dictionary" />
 
-<%--<fmt:setBundle
-	basename="ua.nure.zhmaiev.SummaryTask4.locale.i18n.Resources" /> --%>

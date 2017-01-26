@@ -8,13 +8,13 @@
 	<c:when test="${sessionScope.lang eq 'en'}">
 <c:set var="language" value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}" scope="session" />
 <fmt:setLocale value="${language}" />
-<fmt:setBundle basename="resources_en.properties" />
+<fmt:setBundle basename="dictionary_en" />
 	
 	</c:when>
 	<c:when test="${sessionScope.lang eq 'ru'}">
 <c:set var="language" value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}" scope="session" />
 <fmt:setLocale value="${language}" />
-<fmt:setBundle basename="resources.properties" />
+<fmt:setBundle basename="dictionary" />
 	
 	</c:when>
 </c:choose>

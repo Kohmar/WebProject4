@@ -20,13 +20,13 @@
 		</h2>
 		<input type="hidden" name="command" value="login"/>
 		<div class="form-group">
-			<label for="usr"><fmt:message key="login.login" /></label> <input
-				type="text" class="form-control" name="login" id="usr">
+			<label for="usr" ><fmt:message key="login.login" /></label> <input
+				type="text" class="form-control" name="login" >
 		</div>
 
 		<div class="form-group">
-			<label for="pwd"><fmt:message key="login.password" /></label> <input
-				type="password" class="form-control" name="password" id="pwd">
+			<label for="pwd" ><fmt:message key="login.password" /></label> <input
+				type="password" class="form-control" name="password" >
 		</div>
 
 

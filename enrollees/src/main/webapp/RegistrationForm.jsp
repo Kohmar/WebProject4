@@ -66,7 +66,7 @@
 		</div>
 		
 		<div class="form-group row">
-		<!-- <div class="col-xs-3"> -->
+		 <div class="col-xs-3">
 			<label for="inputPassword3" id="inputPassword3" class="col-sm-2 col-form-label"><fmt:message
 					key="registration_form.input.password" /></label>
 					 <div class="col-sm-10">
