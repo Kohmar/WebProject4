@@ -1,12 +1,15 @@
 package ua.training.dao.impl;
 
 import com.mysql.cj.jdbc.MysqlConnectionPoolDataSource;
+import com.sun.javafx.binding.StringFormatter;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import ua.training.dao.ConnectionPool;
 import ua.training.dao.FacultyDAO;
 import ua.training.entity.Faculty;
+
+import java.sql.*;
 
 /**
  * Created by Kotov Nicholas on 25.01.2017.
@@ -63,4 +66,24 @@ public class FacultyDAOImplTest {
         Assert.assertNotNull(facultyDAO.insertFaculty(testFaculty));
     }
 
+    @Test
+    public void connectToDb() throws ClassNotFoundException, IllegalAccessException, InstantiationException, SQLException {
+        String url ="jdbc:mysql://localhost:3306/myDb";
+        String username = "root";
+        String password = "root";
+
+        System.out.println("Connecting database...");
+
+
+        Connection conn = DriverManager.getConnection(url, username, password);
+
+        Statement stmt = conn.createStatement();
+        stmt.execute("SELECT * FROM role");
+        ResultSet result=stmt.getResultSet();
+        if (result.next()) {
+            System.out.println("index: "+result.getString(1) + " role_type: "+ result.getString(2));
+        }
+
+        conn.close();
+    }
 }

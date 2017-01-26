@@ -4,7 +4,7 @@ use st4db;
 
 DROP TABLE IF exists Users;
 CREATE TABLE If not exists Users(
-id int not null AUTO_INCREMENT, 
+id int not null AUTO_INCREMENT,
 first_name varchar(45) not null,
 last_name varchar(45) not null,
 email varchar(255) not null,
@@ -12,7 +12,8 @@ password varchar (32) not null,
 role enum('client','admin'),
 primary key (id),
 unique index id_unique (id asc),
-unique index email_unique (email asc));
+unique index email_unique (email asc))
+engine = MyISAM;
 
 DROP TABLE IF exists Enrollee;
 CREATE TABLE IF NOT exists Enrollee(
@@ -24,28 +25,28 @@ isBlocked boolean not null default false,
 primary key (id),
 unique index id_unique(id asc),
 foreign key (User_idUser) references Users(id)
-on delete no action
-on update no action	);
+ON DELETE CASCADE ON UPDATE RESTRICT)engine = MyISAM;
 
 
 
 DROP TABLE if exists Faculty;
 CREATE TABLE IF not exists Faculty(
 id int not null AUTO_INCREMENT,
+nameOfFaculty varchar(45) not null,
 total_seats int not null,
 budget_seats int not null,
 primary key (id))
-engine = InnoDB;
+engine = MyISAM;
 
 
 
 
-DROP TABLE if exists Subject; 
+DROP TABLE if exists Subject;
 Create table if not exists Subject(
 id int not null AUTO_INCREMENT,
 nameOfSubject varchar(45) not null,
 primary key (id))
-engine = InnoDB;
+engine = MyISAM;
 
 
 DROP TABLE If exists Faculty_Subjects;
@@ -56,12 +57,10 @@ Subject_idSubject INT NOT NULL,
 primary key(id,Faculty_idFaculty,Subject_idSubject),
 unique index idFacultySubjects_UNIQUE (id asc),
 foreign key (Faculty_idFaculty) references Faculty(id)
-on delete no action
-on update no action,
+ON DELETE CASCADE ON UPDATE RESTRICT,
 foreign key(Subject_idSubject) references Subject(id)
-on delete no action
-on update no action)
-engine = InnoDB;
+ON DELETE CASCADE ON UPDATE RESTRICT)
+engine = MyISAM;
 
 
 DROP TABLE IF exists Faculty_Enrollees;
@@ -72,12 +71,10 @@ Enrollee_idEnrollee int not null,
 primary key(id,Faculty_idFaculty,Enrollee_idEnrollee),
 unique index idFacultyEnrollees_UNIQUE (id asc),
 foreign key (Faculty_idFaculty) references Faculty(id)
-on delete no action
-on update no action,
+ON DELETE CASCADE ON UPDATE RESTRICT,
 foreign key (Enrollee_idEnrollee) references Enrollee(id)
-on delete no action
-on update no action)
-engine = InnoDB;
+ON DELETE CASCADE ON UPDATE RESTRICT)
+engine = MyISAM;
 
 DROP TABLE IF exists Mark;
 create table if not exists Mark(
@@ -88,4 +85,5 @@ Enrollee_idEnrollee int not null,
 primary key (id,Subject_idSubject,Enrollee_idEnrollee),
 unique index idMark_UNIQUE (id asc),
 foreign key (Subject_idSubject) references Subject(id),
-foreign key (Enrollee_idEnrollee) references Enrollee(id));
+foreign key (Enrollee_idEnrollee) references Enrollee(id))
+ engine = MyISAM;
