@@ -41,8 +41,7 @@ public class RegistrateUserCommand extends Command{
 
 		return result;
 	}
-	
-	
+
 	private String doPost(HttpServletRequest request, HttpServletResponse response) {
 		LOG.trace("Starting doPost in RegistrateCommand");
 		String firstName = request.getParameter("firstName");

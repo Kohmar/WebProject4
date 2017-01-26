@@ -60,7 +60,7 @@
 					<div class="col-sm-10">
 					<input class="form-control"
 				type="text" name="login"/>
-				</div>
+					</div>
 
 		<!-- </div> -->
 		</div>
@@ -73,15 +73,14 @@
 					 <input
 				class="form-control" type="password" name="password"/>
 					</div>
-		<!-- </div> -->
 		</div>
-		
-		 <div>
+		</div>
+		<div>
 		<input class="btn btn-info" type="submit"
 			value="<fmt:message key="registrate"/>"/>
 		</div> 
 	</form>
-	</div>
+</div>
 	<%@ include file="/WEB-INF/jspf/header.jspf"%>
 
 </body>

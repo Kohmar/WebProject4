@@ -10,7 +10,7 @@ public class FieldValidation {
 	private static Logger LOG = Logger.getLogger(FieldValidation.class);
 	
 	private static final String positiveDecimalNumberRegEx = "\\d+";
-	private static final String filledRegex = "^[а-яА-ЯёЁa-zA-Z][а-яА-ЯёЁa-zA-Z0-9-_\\.]{1,20}$";
+	private static final String filledRegex = "^[a-z0-9_-]{3,20}$";
 	private static final String isLatinWord = "[a-zA-Z ]+";
 	private static final String isCyrillicWord = "[а-яА-Я ]+";
 	private static final String loginRegex = "^[a-z0-9_-]{3,15}$";

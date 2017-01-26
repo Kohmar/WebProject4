@@ -47,14 +47,14 @@ public class ConnectionPool {
                 Context envContext = (Context) initContext.lookup("java:/comp/env");
                 dataSource = (DataSource) envContext.lookup("jdbc/st4db");
             } catch (NamingException e) {
-                System.out.println("Cannot find the data source");
+                LOG.warn("Cannot find the data source");
             }
         }
 
         try {
             return DriverManager.getConnection(url, username, password);
         } catch (SQLException e) {
-            LOG.warn("Cannot establish connection");
+            LOG.warn("Cannot establish connection" +e.getMessage()+ " "+e.getErrorCode());
             return null;
         }
     }
