@@ -67,11 +67,11 @@
 		
 		<div class="form-group row">
 		<!-- <div class="col-xs-3"> -->
-			<label for="inputPassword3" class="col-sm-2 col-form-label"><fmt:message
+			<label for="inputPassword3" id="inputPassword3" class="col-sm-2 col-form-label"><fmt:message
 					key="registration_form.input.password" /></label>
 					 <div class="col-sm-10">
 					 <input
-				class="form-control" type="password" name="password" id="inputPassword3"/>
+				class="form-control" type="password" name="password"/>
 					</div>
 		<!-- </div> -->
 		</div>
