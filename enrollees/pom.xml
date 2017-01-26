@@ -2,10 +2,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>ua.training</groupId>
-    <artifactId>webstadiummvn</artifactId>
+    <artifactId>student_and_education</artifactId>
     <packaging>war</packaging>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Webstadium Maven Webapp</name>
+    <name>student_and_education</name>
     <url>http://maven.apache.org</url>
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -71,20 +71,34 @@
 
     </dependencies>
     <build>
-        <finalName>webstadiummvn</finalName>
+        <finalName>student_and_education</finalName>
         <plugins>
             <plugin>
-
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.3</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+            <plugin>
                 <groupId>org.apache.tomcat.maven</groupId>
                 <artifactId>tomcat7-maven-plugin</artifactId>
                 <version>2.2</version>
                 <configuration>
-                    <url>http://localhost:8080/manager/text</url>
-                    <server>TomcatServer</server>
-                    <update>true</update>
-                    <path>/webstadiummvn</path>
-                    <username>manager</username>
+                    <url>http://localhost:8080/manager/html</url>
+                    <server>localhost</server>
+                    <path>/${project.build.finalName}</path>
+                    <username>admin</username>
                     <password>admin</password>
+                    <update>true</update>
                 </configuration>
             </plugin>
         </plugins>
