@@ -14,7 +14,7 @@ public class BecomeEnrolleeFieldValidator {
 		if(city == null) {
 			return false;
 		}
-		if(!city.matches("^([a-zA-Zа-яА-Я\u0080-\u024F]+(?:. |-| |'))*[a-zA-Zа-яА-Я\u0080-\u024F]*$")){
+		if(!city.matches("^[a-zA-Z]+(?:[\\s-][a-zA-Z]+)*$")){
 			return false;
 		}
 		return true;
@@ -25,7 +25,7 @@ public class BecomeEnrolleeFieldValidator {
 		if(region == null) {
 			return false;
 		}
-		if(!region.matches("^([a-zA-Zа-яА-Я\u0080-\u024F]+(?:. |-| |'))*[a-zA-Zа-яА-Я\u0080-\u024F]*$")){
+		if(!region.matches("^[a-zA-Z]+(?:[\\s-][a-zA-Z]+)*$")){
 			return false;
 		}
 		return true;
