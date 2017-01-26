@@ -1,5 +1,6 @@
 package ua.training.dao;
 
+import com.mysql.cj.jdbc.MysqlDataSource;
 import org.apache.log4j.Logger;
 
 import javax.naming.Context;
@@ -19,7 +20,7 @@ public class ConnectionPool {
     /**
      * DataSource field.
      */
-    private static DataSource dataSource;
+    private static MysqlDataSource dataSource;
 
 
     /**
@@ -27,7 +28,7 @@ public class ConnectionPool {
      *
      * @param dataSource
      */
-    public ConnectionPool(DataSource dataSource) {
+    public ConnectionPool(MysqlDataSource dataSource) {
         ConnectionPool.dataSource = dataSource;
     }
 
@@ -40,21 +41,17 @@ public class ConnectionPool {
         String url = "jdbc:mysql://localhost:3306/st4db";
         String username = "root";
         String password = "root";
-        if (dataSource == null) {
-            try {
 
-                Context initContext = new InitialContext();
-                Context envContext = (Context) initContext.lookup("java:/comp/env");
-                dataSource = (DataSource) envContext.lookup("jdbc/st4db");
-            } catch (NamingException e) {
-                LOG.warn("Cannot find the data source");
-            }
-        }
+        dataSource = new MysqlDataSource();
+        dataSource.setUser("root");
+        dataSource.setPassword("root");
+        dataSource.setServerName("localhost");
+        dataSource.setDatabaseName("st4db");
 
         try {
-            return DriverManager.getConnection(url, username, password);
+            return dataSource.getConnection();
         } catch (SQLException e) {
-            LOG.warn("Cannot establish connection" +e.getMessage()+ " "+e.getErrorCode());
+            LOG.trace("Cannot establish connection" + e.getMessage() + " " + e.getErrorCode());
             return null;
         }
     }

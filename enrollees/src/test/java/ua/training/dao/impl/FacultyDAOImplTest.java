@@ -1,6 +1,7 @@
 package ua.training.dao.impl;
 
 import com.mysql.cj.jdbc.MysqlConnectionPoolDataSource;
+import com.mysql.cj.jdbc.MysqlDataSource;
 import com.sun.javafx.binding.StringFormatter;
 import org.junit.Assert;
 import org.junit.BeforeClass;
@@ -61,29 +62,41 @@ public class FacultyDAOImplTest {
 //    }
 //
 //
-//    @Test
-//    public void testInsertFaculty() {
-//        Assert.assertNotNull(facultyDAO.insertFaculty(testFaculty));
-//    }
-
     @Test
-    public void connectToDb() throws ClassNotFoundException, IllegalAccessException, InstantiationException, SQLException {
-        String url ="jdbc:mysql://localhost:3306/st4db";
-        String username = "root";
-        String password = "root";
-
-        System.out.println("Connecting database...");
-
-
-        Connection conn = DriverManager.getConnection(url, username, password);
-
+    public void checkConViaData() throws SQLException {
+        MysqlDataSource dataSource = new MysqlDataSource();
+        dataSource.setUser("root");
+        dataSource.setPassword("root");
+        dataSource.setServerName("localhost");
+        dataSource.setDatabaseName("st4db");
+        Connection conn = dataSource.getConnection();
         Statement stmt = conn.createStatement();
-        stmt.execute("SELECT * FROM users");
-        ResultSet result=stmt.getResultSet();
-        if (result.next()) {
-            System.out.println("index: "+result.getString(1) + " users: "+ result.getString(2));
+        ResultSet rs = stmt.executeQuery("SELECT * FROM USERS");
+        if (rs.next()) {
+            System.out.println("index: " + rs.getString(1) + " users: " + rs.getString(2));
         }
 
         conn.close();
     }
+
+//    @Test
+//    public void connectToDb() throws ClassNotFoundException, IllegalAccessException, InstantiationException, SQLException {
+//        String url ="jdbc:mysql://localhost:3306/st4db";
+//        String username = "root";
+//        String password = "root";
+//
+//        System.out.println("Connecting database...");
+//
+//
+//        Connection conn = DriverManager.getConnection(url, username, password);
+//
+//        Statement stmt = conn.createStatement();
+//        stmt.execute("SELECT * FROM users");
+//        ResultSet result=stmt.getResultSet();
+//        if (result.next()) {
+//            System.out.println("index: "+result.getString(1) + " users: "+ result.getString(2));
+//        }
+//
+//        conn.close();
+//    }
 }
