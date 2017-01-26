@@ -32,11 +32,13 @@ public class FrontController extends HttpServlet{
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
+		LOG.info("request:"+request);
 		process(request, response, ActionType.GET);
 	}
 
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
+		LOG.info("request:"+request);
 		process(request, response, ActionType.POST);
 	}
 
@@ -46,6 +48,7 @@ public class FrontController extends HttpServlet{
 			throws IOException, ServletException {
 
 		LOG.debug("Start processing in Controller");
+		LOG.info("request:"+request);
 
 		// extract command name from the request
 		String commandName = request.getParameter("command");
