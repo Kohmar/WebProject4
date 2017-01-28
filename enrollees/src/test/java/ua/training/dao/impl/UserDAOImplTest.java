@@ -18,7 +18,7 @@ public class UserDAOImplTest {
 //    @BeforeClass
 //    public static void beforeClass() {
 //        userDAO = new UserDAOImpl();
-//        testUser = new User("v_osmachko@mail.ru","abc","abc","Valeron","Valeron","client");
+//        testUser = new User("kotov@gmail.com","abc","abc","Nicholas","Nicholas","client");
 //        try {
 //            Class.forName("com.mysql.jdbc.Driver");
 //            MysqlConnectionPoolDataSource dataSource = new MysqlConnectionPoolDataSource();

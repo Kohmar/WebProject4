@@ -48,7 +48,7 @@ public class FacultyEnrollee extends Entity{
     /**
      * Field for summary points.
      */
-    private Integer summaryPionts;
+    private Integer summaryPoints;
 
 
     public FacultyEnrollee() {
@@ -56,51 +56,57 @@ public class FacultyEnrollee extends Entity{
     }
 
     /**
-     * Constructor for getting FacultyEnrollee from database.
-     *
-     * @param id
-     * @param facultyId
-     * @param enrolleeId
-     * @param firstName
-     * @param lastName
-     * @param city
-     * @param region
-     * @param summaryPionts
+     * Getter for the id.
+     * @return int
      */
-    public FacultyEnrollee(int id, int facultyId, int enrolleeId, String firstName, String lastName, String city,
-                           String region, Integer summaryPionts) {
-        super();
-        this.setId(id);
-        this.facultyId = facultyId;
-        this.enrolleeId = enrolleeId;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.city = city;
-        this.region = region;
-        this.summaryPionts = summaryPionts;
+    public int getId() {
+        return id;
     }
 
     /**
-     * Constructor for adding FacultyEnrollee into database.
+     * Setter for id.
+     * @param id
+     */
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    /**
+     * Getter for faculty id.
+     *
+     * @return
+     */
+    public int getFacultyId() {
+        return facultyId;
+    }
+
+    /**
+     * Setter for faculty id.
      *
      * @param facultyId
-     * @param enrolleeId
-     * @param firstName
-     * @param lastName
-     * @param city
-     * @param region
-     * @param summaryPionts
      */
-    public FacultyEnrollee(int facultyId, int enrolleeId, String firstName, String lastName, String city, String region,
-                           Integer summaryPionts) {
+    public void setFacultyId(int facultyId) {
         this.facultyId = facultyId;
-        this.enrolleeId = enrolleeId;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.city = city;
-        this.region = region;
-        this.summaryPionts = summaryPionts;
     }
+
+    /**
+     * Getter for Enrollee id.
+     *
+     * @return
+     */
+    public int getEnrolleeId() {
+        return enrolleeId;
+    }
+
+    /**
+     * Setter for enrollee id.
+     *
+     * @param enrolleeId
+     */
+    public void setEnrolleeId(int enrolleeId) {
+        this.enrolleeId = enrolleeId;
+    }
+
 
     /**
      * Getter for first Name.
@@ -177,71 +183,127 @@ public class FacultyEnrollee extends Entity{
     /**
      * Getter for the SummaryPoints.
      *
-     * @return
+     * @return Integer
      */
-    public Integer getSummaryPionts() {
-        return summaryPionts;
+    public Integer getsummaryPoints() {
+        return summaryPoints;
     }
 
     /**
-     * Setter for the summaty Pionts.
+     * Setter for the summaty Points.
      *
-     * @param summaryPionts
+     * @param summaryPoints
      */
-    public void setSummaryPionts(Integer summaryPionts) {
-        this.summaryPionts = summaryPionts;
+    public void setsummaryPoints(Integer summaryPoints) {
+        this.summaryPoints = summaryPoints;
     }
 
-    /**
-     * Getter for faculty id.
-     *
-     * @return
-     */
-    public int getFacultyId() {
-        return facultyId;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        FacultyEnrollee that = (FacultyEnrollee) o;
+
+        if (id != that.id) return false;
+        if (facultyId != that.facultyId) return false;
+        if (enrolleeId != that.enrolleeId) return false;
+        if (!firstName.equals(that.firstName)) return false;
+        if (!lastName.equals(that.lastName)) return false;
+        if (!city.equals(that.city)) return false;
+        if (!region.equals(that.region)) return false;
+        return summaryPoints.equals(that.summaryPoints);
+
     }
 
-    /**
-     * Setter for faculty id.
-     *
-     * @param facultyId
-     */
-    public void setFacultyId(int facultyId) {
-        this.facultyId = facultyId;
-    }
-
-    /**
-     * Getter for Enrollee id.
-     *
-     * @return
-     */
-    public int getEnrolleeId() {
-        return enrolleeId;
-    }
-
-    /**
-     * Setter for enrollee id.
-     *
-     * @param enrolleeId
-     */
-    public void setEnrolleeId(int enrolleeId) {
-        this.enrolleeId = enrolleeId;
-    }
-
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + facultyId;
+        result = 31 * result + enrolleeId;
+        result = 31 * result + firstName.hashCode();
+        result = 31 * result + lastName.hashCode();
+        result = 31 * result + city.hashCode();
+        result = 31 * result + region.hashCode();
+        result = 31 * result + summaryPoints.hashCode();
+        return result;
     }
 
     @Override
     public String toString() {
         return "FacultyEnrollee [facultyId=" + facultyId + ", enrolleeId=" + enrolleeId + ", firstName=" + firstName
-                + ", lastName=" + lastName + ", city=" + city + ", region=" + region + ", summaryPionts="
-                + summaryPionts + "]";
+                + ", lastName=" + lastName + ", city=" + city + ", region=" + region + ", summaryPoints="
+                + summaryPoints + "]";
+    }
+
+    /**
+     * class for build class FacultyEnrollee
+     */
+    public static class Builder{
+
+        private int id;
+        private int facultyId;
+        private int enrolleeId;
+        private String firstName;
+        private String lastName;
+        private String city;
+        private String region;
+        private Integer summaryPoints;
+
+
+        public Builder setId(int id) {
+            this.id = id;
+            return this;
+        }
+
+        public Builder setFacultyId(int facultyId) {
+            this.facultyId = facultyId;
+            return this;
+        }
+
+        public Builder setEnrolleeId(int enrolleeId) {
+            this.enrolleeId = enrolleeId;
+            return this;
+        }
+
+        public Builder setFirstName(String firstName) {
+            this.firstName = firstName;
+            return this;
+        }
+
+        public Builder setLastName(String lastName) {
+            this.lastName = lastName;
+            return this;
+        }
+
+        public Builder setCity(String city) {
+            this.city = city;
+            return this;
+        }
+
+        public Builder setRegion(String region) {
+            this.region = region;
+            return this;
+        }
+
+        public Builder setsummaryPoints(Integer summaryPoints) {
+            this.summaryPoints = summaryPoints;
+            return this;
+        }
+
+        public FacultyEnrollee build() {
+            FacultyEnrollee facultyEnrollee = new FacultyEnrollee();
+            facultyEnrollee.setId(id);
+            facultyEnrollee.setFacultyId(facultyId);
+            facultyEnrollee.setEnrolleeId(enrolleeId);
+            facultyEnrollee.setFirstName(firstName);
+            facultyEnrollee.setLastName(lastName);
+            facultyEnrollee.setCity(city);
+            facultyEnrollee.setRegion(region);
+            facultyEnrollee.setsummaryPoints(summaryPoints);
+
+            return facultyEnrollee;
+        }
     }
 
 }

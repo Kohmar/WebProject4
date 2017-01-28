@@ -53,8 +53,9 @@ public class CommandContainer {
 	
 	
 	
-	
-	public static Command get(String commandName) {
+
+
+	public static Command get(String commandName) { //todo убрать стетик
 		if (commandName == null || !commands.containsKey(commandName)) {
 			LOG.trace("Command not found with name = " + commandName);
 			return commands.get("noCommand");

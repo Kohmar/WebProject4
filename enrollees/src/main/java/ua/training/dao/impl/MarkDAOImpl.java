@@ -19,9 +19,6 @@ public class MarkDAOImpl implements MarkDAO {
     Connection connection;
     private static final Logger LOGGER = Logger.getLogger(MarkDAOImpl.class);
 
-    /* (non-Javadoc)
-     * @see ua.nure.osmachko.summarytask4.dao.MarkDAO#getAllMarks()
-     */
     @Override
     public List<Mark> getAllMarks() {
         List<Mark> marks = new ArrayList<Mark>();
@@ -39,9 +36,6 @@ public class MarkDAOImpl implements MarkDAO {
         return null;
     }
 
-    /* (non-Javadoc)
-     * @see ua.nure.osmachko.summarytask4.dao.MarkDAO#findMarkById(java.lang.Integer)
-     */
     @Override
     public Mark findMarkById(Integer idMark) {
         Mark mark = null;
@@ -58,9 +52,6 @@ public class MarkDAOImpl implements MarkDAO {
         return mark;
     }
 
-    /* (non-Javadoc)
-     * @see ua.nure.osmachko.summarytask4.dao.MarkDAO#insertMark(ua.nure.osmachko.summarytask4.core.entity.Mark)
-     */
     @Override
     public boolean insertMark(Mark mark) {
         connection = ConnectionPool.getConnection();
@@ -77,9 +68,6 @@ public class MarkDAOImpl implements MarkDAO {
         return true;
     }
 
-    /* (non-Javadoc)
-     * @see ua.nure.osmachko.summarytask4.dao.MarkDAO#updateMark(java.lang.Integer, ua.nure.osmachko.summarytask4.core.entity.Mark)
-     */
     @Override
     public boolean updateMark(Integer idMark, Mark mark) {
         connection = ConnectionPool.getConnection();
@@ -96,9 +84,6 @@ public class MarkDAOImpl implements MarkDAO {
         return true;
     }
 
-    /* (non-Javadoc)
-     * @see ua.nure.osmachko.summarytask4.dao.MarkDAO#deleteMark(java.lang.Integer)
-     */
     @Override
     public boolean deleteMark(Integer idMark) {
         connection = ConnectionPool.getConnection();

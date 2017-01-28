@@ -69,8 +69,15 @@ public class ConfirmMarksCommand extends Command {
 		User user = (User) request.getSession().getAttribute("user");
 		Enrollee enrollee = (Enrollee) request.getSession().getAttribute("enrollee");
 		Integer idFaculty = (Integer) request.getSession().getAttribute("FacultyId");
-		FacultyEnrollee fe = new FacultyEnrollee(idFaculty,user.getId(),user.getFirstName(),user.getLastName(),enrollee.getCity(),
-				enrollee.getRegion(),summaryPoint);
+		FacultyEnrollee fe = new FacultyEnrollee.Builder()
+				.setFacultyId(idFaculty)
+				.setEnrolleeId(user.getId())
+				.setFirstName(user.getFirstName())
+				.setLastName(user.getLastName())
+				.setCity(enrollee.getCity())
+				.setRegion(enrollee.getRegion())
+				.setsummaryPoints(summaryPoint)
+				.build();
 		LOG.trace("FacultyEnrollee was created" + fe);
 		new DAOFactoryImpl().getDAOFacultyEnrollee().insertFacultyEnrollee(fe);
 		LOG.trace("added to databese");

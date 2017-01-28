@@ -34,31 +34,19 @@ public class Faculty extends Entity {
     }
 
     /**
-     * Public constructor for bean of Faculty.
-     *
-     * @param nameOfFaculty
-     * @param budgetSeats
-     * @param totalSeats
+     * Getter for the id.
+     * @return int
      */
-    public Faculty(String nameOfFaculty, int budgetSeats, int totalSeats) {
-        this.nameOfFaculty = nameOfFaculty;
-        this.budgetSeats = budgetSeats;
-        this.totalSeats = totalSeats;
+    public int getId() {
+        return id;
     }
 
     /**
-     * Public constructor for getting Enrollee from database.
-     *
+     * Setter for id.
      * @param id
-     * @param nameOfFaculty
-     * @param budgetSeats
-     * @param totalSeats
      */
-    public Faculty(int id, String nameOfFaculty, int budgetSeats, int totalSeats) {
-        this.setId(id);
-        this.nameOfFaculty = nameOfFaculty;
-        this.budgetSeats = budgetSeats;
-        this.totalSeats = totalSeats;
+    public void setId(int id) {
+        this.id = id;
     }
 
     /**
@@ -116,12 +104,75 @@ public class Faculty extends Entity {
     }
 
 
-    public int getId() {
-        return id;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Faculty faculty = (Faculty) o;
+
+        if (id != faculty.id) return false;
+        return nameOfFaculty.equals(faculty.nameOfFaculty);
+
     }
 
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + nameOfFaculty.hashCode();
+        return result;
+    }
 
-    public void setId(int id) {
-        this.id = id;
+    @Override
+    public String toString() {
+        return "Faculty{" +
+                "id=" + id +
+                ", nameOfFaculty='" + nameOfFaculty + '\'' +
+                ", budgetSeats=" + budgetSeats +
+                ", totalSeats=" + totalSeats +
+                '}';
+    }
+
+    /**
+     * class for build class Faculty
+     */
+    public static class Builder{
+
+        private int id;
+        private String nameOfFaculty;
+        private int budgetSeats;
+        private int totalSeats;
+
+
+        public Builder setId(int id) {
+            this.id = id;
+            return this;
+        }
+
+        public Builder setNameOfFaculty(String nameOfFaculty) {
+            this.nameOfFaculty = nameOfFaculty;
+            return this;
+        }
+
+        public Builder setBudgetSeats(int budgetSeats) {
+            this.budgetSeats = budgetSeats;
+            return this;
+        }
+
+        public Builder setTotalSeats(int totalSeats) {
+            this.totalSeats = totalSeats;
+            return this;
+        }
+
+        public Faculty build(){
+            Faculty faculty = new Faculty();
+            faculty.setId(id);
+            faculty.setNameOfFaculty(nameOfFaculty);
+            faculty.setBudgetSeats(budgetSeats);
+            faculty.setTotalSeats(totalSeats);
+            return faculty;
+
+        }
     }
 }
+

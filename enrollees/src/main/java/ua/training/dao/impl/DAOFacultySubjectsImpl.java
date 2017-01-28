@@ -21,9 +21,6 @@ public class DAOFacultySubjectsImpl implements DAOFacultySubjects {
 
     Connection connection;
 
-    /* (non-Javadoc)
-     * @see ua.nure.osmachko.summarytask4.dao.DAOFacultySubjects#findSubjectsByFacultyId(java.lang.Integer)
-     */
     @Override
     public List<Subject> findSubjectsByFacultyId(Integer facultyId) {
         LOG.trace("finding subjects by faculty id...");
@@ -78,10 +75,6 @@ public class DAOFacultySubjectsImpl implements DAOFacultySubjects {
 
     }
 
-
-    /* (non-Javadoc)
-     * @see ua.nure.osmachko.summarytask4.dao.DAOFacultySubjects#insertSubjectsToFaculty(java.lang.Integer, java.lang.Integer)
-     */
     @Override
     public boolean insertSubjectsToFaculty(Integer facultyId, Integer subjectId) {
         LOG.trace("Adding subjects to faculties");

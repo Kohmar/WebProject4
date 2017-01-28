@@ -60,7 +60,14 @@ public class AddUserCommand extends Command {
 		
 		
 		UserDAO ud = new DAOFactoryImpl().getUserDAO();
-		User user = new User(email,password,login,firstName,lastName,role);
+		User user = new User.Builder()
+				.setEmail(email)
+				.setPassword(password)
+				.setFirstName(firstName)
+				.setLastName(lastName)
+				.setLogin(login)
+				.setRole(role)
+				.build();
 		ud.insertUser(user);
 		LOG.trace("User added to database");
 		return Path.REDIRECT_TO_VIEW_ALL_USERS;

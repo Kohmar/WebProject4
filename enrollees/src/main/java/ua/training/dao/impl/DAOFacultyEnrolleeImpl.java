@@ -23,24 +23,18 @@ public class DAOFacultyEnrolleeImpl implements DAOFacultyEnrollee {
 
     private static final Logger LOG = Logger.getLogger(DAOFacultyEnrolleeImpl.class);
 
-    /*
-     * (non-Javadoc)
-     *
-     * @see ua.nure.osmachko.summarytask4.dao.DAOFacultyEnrollee#
-     * insertFacultyEnrollee(ua.nure.osmachko.summarytask4.core.entity.
-     * FacultyEnrollee)
-     */
+
     @Override
     public boolean insertFacultyEnrollee(FacultyEnrollee fe) {
         LOG.trace("Starting adding FacultyEnrollee");
         connection = ConnectionPool.getConnection();
         try (PreparedStatement pstmt = connection.prepareStatement(
-                "insert into faculty_enrollees(firstName,lastName,city,region,sumPionts,Faculty_idFaculty,Enrollee_idEnrollee) values (?,?,?,?,?,?,?);")) {
+                "insert into faculty_enrollees(firstName,lastName,city,region,sumPoints,Faculty_idFaculty,Enrollee_idEnrollee) values (?,?,?,?,?,?,?);")) {
             pstmt.setString(1, fe.getFirstName());
             pstmt.setString(2, fe.getLastName());
             pstmt.setString(3, fe.getCity());
             pstmt.setString(4, fe.getRegion());
-            pstmt.setInt(5, fe.getSummaryPionts());
+            pstmt.setInt(5, fe.getsummaryPoints());
             pstmt.setInt(6, fe.getFacultyId());
             pstmt.setInt(7, fe.getEnrolleeId());
             pstmt.executeUpdate();
@@ -68,13 +62,6 @@ public class DAOFacultyEnrolleeImpl implements DAOFacultyEnrollee {
 
     }
 
-    /*
-     * (non-Javadoc)
-     *
-     * @see
-     * ua.nure.osmachko.summarytask4.dao.DAOFacultyEnrollee#isEmptyFaculty(java.
-     * lang.Integer)
-     */
     @Override
     public boolean isEmptyFaculty(Integer facultyID) {
         boolean isEmpty = false;
@@ -86,9 +73,17 @@ public class DAOFacultyEnrolleeImpl implements DAOFacultyEnrollee {
             pstmt.execute();
             ResultSet rs = pstmt.getResultSet();
             while (rs.next()) {
-                fe.add(new FacultyEnrollee(rs.getInt("Faculty_idFaculty"), rs.getInt("Enrollee_idEnrollee"),
-                        rs.getString("firstName"), rs.getString("lastName"), rs.getString("city"),
-                        rs.getString("region"), rs.getInt("sumPionts")));
+                fe.add(new FacultyEnrollee.Builder()
+                        .setId(rs.getInt("id"))
+                        .setFacultyId(rs.getInt("Faculty_idFaculty"))
+                        .setEnrolleeId(rs.getInt("Enrollee_idEnrollee"))
+                        .setFirstName(rs.getString("firstName"))
+                        .setLastName(rs.getString("lastName"))
+                        .setCity(rs.getString("city"))
+                        .setRegion(rs.getString("region"))
+                        .setsummaryPoints(rs.getInt("sumPoints"))
+                        .build()
+                );
             }
             if (fe.isEmpty()) {
                 isEmpty = true;
@@ -103,12 +98,6 @@ public class DAOFacultyEnrolleeImpl implements DAOFacultyEnrollee {
         return isEmpty;
     }
 
-    /*
-     * (non-Javadoc)
-     *
-     * @see ua.nure.osmachko.summarytask4.dao.DAOFacultyEnrollee#
-     * getAllFacultyEnrollee()
-     */
     @Override
     public List<FacultyEnrollee> getAllFacultyEnrollee() {
         List<FacultyEnrollee> fe = new ArrayList<FacultyEnrollee>();
@@ -117,9 +106,16 @@ public class DAOFacultyEnrolleeImpl implements DAOFacultyEnrollee {
             pstmt.execute();
             ResultSet rs = pstmt.getResultSet();
             while (rs.next()) {
-                fe.add(new FacultyEnrollee(rs.getInt("Faculty_idFaculty"), rs.getInt("Enrollee_idEnrollee"),
-                        rs.getString("firstName"), rs.getString("lastName"), rs.getString("city"),
-                        rs.getString("region"), rs.getInt("sumPionts")));
+                fe.add(new FacultyEnrollee.Builder()
+                        .setFacultyId(rs.getInt("Faculty_idFaculty"))
+                        .setEnrolleeId(rs.getInt("Enrollee_idEnrollee"))
+                        .setFirstName(rs.getString("firstName"))
+                        .setLastName(rs.getString("lastName"))
+                        .setCity(rs.getString("city"))
+                        .setRegion(rs.getString("region"))
+                        .setsummaryPoints(rs.getInt("sumPoints"))
+                        .build()
+                );
             }
         } catch (SQLException e) {
             // TODO: handle exception
@@ -129,24 +125,17 @@ public class DAOFacultyEnrolleeImpl implements DAOFacultyEnrollee {
         return fe;
     }
 
-    /*
-     * (non-Javadoc)
-     *
-     * @see ua.nure.osmachko.summarytask4.dao.DAOFacultyEnrollee#
-     * insertFacultyEnrolleeWithScan(ua.nure.osmachko.summarytask4.core.entity.
-     * FacultyEnrollee, java.io.InputStream)
-     */
     @Override
     public boolean insertFacultyEnrolleeWithScan(FacultyEnrollee fe, InputStream is) {
         LOG.trace("Starting adding FacultyEnrollee");
         connection = ConnectionPool.getConnection();
         try (PreparedStatement pstmt = connection.prepareStatement(
-                "insert into faculty_enrollees(firstName,lastName,city,region,sumPionts,Faculty_idFaculty,Enrollee_idEnrollee,scan) values (?,?,?,?,?,?,?,?);")) {
+                "insert into faculty_enrollees(firstName,lastName,city,region,sumPoints,Faculty_idFaculty,Enrollee_idEnrollee,scan) values (?,?,?,?,?,?,?,?);")) {
             pstmt.setString(1, fe.getFirstName());
             pstmt.setString(2, fe.getLastName());
             pstmt.setString(3, fe.getCity());
             pstmt.setString(4, fe.getRegion());
-            pstmt.setInt(5, fe.getSummaryPionts());
+            pstmt.setInt(5, fe.getsummaryPoints());
             pstmt.setInt(6, fe.getFacultyId());
             pstmt.setInt(7, fe.getEnrolleeId());
             if (is != null) {

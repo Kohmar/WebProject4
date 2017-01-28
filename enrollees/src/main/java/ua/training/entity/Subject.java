@@ -54,20 +54,12 @@ public class Subject extends Entity{
         return "Subject [nameOfSubject=" + nameOfSubject + "]";
     }
 
-    /*
-     * (non-Javadoc)
-     *
-     * @see ua.nure.osmachko.summarytask4.core.entity.Entity#getId()
-     */
+
     public int getId() {
         return id;
     }
 
-    /*
-     * (non-Javadoc)
-     *
-     * @see ua.nure.osmachko.summarytask4.core.entity.Entity#setId(int)
-     */
+
     public void setId(int id) {
         this.id = id;
     }

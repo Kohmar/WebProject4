@@ -68,7 +68,12 @@ public class AddEnrolleeCommand extends Command {
 		User user = (User) request.getSession().getAttribute("user");
 		LOG.trace("User was got from session: " + user);
 		Integer id = user.getId();
-		Enrollee enrollee = new Enrollee(city,region,id,false);
+		Enrollee enrollee = new Enrollee.Builder()
+				.setCity(city)
+				.setRegion(region)
+				.setUserId(id)
+				.setBlockedStatus(false)
+				.build();
 		EnrolleeDAO enrolledao = new DAOFactoryImpl().getEnrolleeDAO();
 		enrolledao.addEnrollee(enrollee);
 		request.getSession().setAttribute("enrollee", enrollee);

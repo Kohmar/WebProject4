@@ -64,8 +64,12 @@ public class AddFacultyCommand extends Command {
 		
 		LOG.trace("Fields were got: " + nameOfFaculty + "," + totalSeats + ", " + budgerSeats);
 		
-		Faculty faculty = new Faculty(nameOfFaculty, budgerSeats, totalSeats);
-		
+		Faculty faculty = new Faculty.Builder()
+				.setNameOfFaculty(nameOfFaculty)
+				.setBudgetSeats(budgerSeats)
+				.setTotalSeats(totalSeats)
+				.build();
+
 		FacultyDAO facultydao = new FacultyDAOImpl();
 		
 		facultydao.insertFaculty(faculty);

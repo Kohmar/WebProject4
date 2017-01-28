@@ -39,57 +39,35 @@ public class Enrollee  extends Entity{
 
     }
 
-
     /**
-     * First constructor(for selecting).
-     * @param city
-     * @param region
-     * @param user
-     * @param blockedStatus
+     * Getter for the id.
+     * @return int
      */
-    public Enrollee(int id,String city, String region, User user, boolean blockedStatus) {
-        this(id,city,region,user.getId(),blockedStatus);
+    public int getId() {
+        return id;
     }
 
-
     /**
-     * Second constructor(for adding enrollee to DB).
-     * @param city
-     * @param region
-     * @param userId
-     * @param blockedStatus
+     * Setter for id.
+     * @param id
      */
-    public Enrollee(String city, String region, int userId, boolean blockedStatus) {
-        super();
-        this.city = city;
-        this.region = region;
-        this.userId = userId;
-        this.blockedStatus = blockedStatus;
+    public void setId(int id) {
+        this.id = id;
     }
-
-
-    /**
-     * Second constructor
-     * @param city
-     * @param region
-     * @param userId
-     * @param blockedStatus
-     */
-    public Enrollee(int id ,String city, String region, int userId, boolean blockedStatus) {
-        super();
-        this.setId(id);
-        this.city = city;
-        this.region = region;
-        this.userId = userId;
-        this.blockedStatus = false;
-    }
-
 
     /** Getting city.
      * @return String
      */
     public String getCity() {
         return city;
+    }
+
+    /**
+     * Setter for field city.
+     * @param city
+     */
+    public void setCity(String city) {
+        this.city = city;
     }
 
     /**
@@ -100,12 +78,29 @@ public class Enrollee  extends Entity{
         return region;
     }
 
-    /**
-     * Getting name of university.
-     * @return Sting
+    /**Setter for field region.
+     * @param region
      */
+    public void setRegion(String region) {
+        this.region = region;
+    }
+
+    /**
+     * Getter for the user id field.
+     * @return int
+     */
+    public int getUserId() {
+        return userId;
+    }
 
 
+    /**
+     * Setter for user id field.
+     * @param userId
+     */
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
 
     /**
      * Returns the status of the enrollee.
@@ -115,27 +110,6 @@ public class Enrollee  extends Entity{
         return blockedStatus;
     }
 
-
-
-
-    /**
-     * Setter for field city.
-     * @param city
-     */
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-
-    /**Setter for field region.
-     * @param region
-     */
-    public void setRegion(String region) {
-        this.region = region;
-    }
-
-
-
     /**
      * Setter for the field blockStatus.
      * @param blockedStatus
@@ -144,38 +118,82 @@ public class Enrollee  extends Entity{
         this.blockedStatus = blockedStatus;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
 
-    /**
-     * Getter for the userId field.
-     * @return
-     */
-    public int getUserId() {
-        return userId;
+        Enrollee enrollee = (Enrollee) o;
+
+        if (id != enrollee.id) return false;
+        if (userId != enrollee.userId) return false;
+        if (!city.equals(enrollee.city)) return false;
+        return region.equals(enrollee.region);
+
     }
 
-
-    /**
-     * Setter for userid field.
-     * @param userId
-     */
-    public void setUserId(int userId) {
-        this.userId = userId;
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + city.hashCode();
+        result = 31 * result + region.hashCode();
+        result = 31 * result + userId;
+        return result;
     }
-
-
-    public int getId() {
-        return id;
-    }
-
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
 
     @Override
     public String toString() {
         return "Enrollee [id=" + id + ", city=" + city + ", region=" + region + ", userId=" + userId
                 + ", blockedStatus=" + blockedStatus + "]";
     }
+
+    /**
+     * class for build class Enrollee
+     */
+    public static class Builder{
+        private int id;
+        private String city;
+        private String region;
+        private int userId;
+        private boolean blockedStatus;
+
+        public Builder setId(int id) {
+            this.id = id;
+            return this;
+        }
+
+        public Builder setCity(String city) {
+            this.city = city;
+            return this;
+        }
+
+        public Builder setRegion(String region) {
+            this.region = region;
+            return this;
+        }
+
+        public Builder setUserId(int userId) {
+            this.userId = userId;
+            return this;
+        }
+
+        public Builder setBlockedStatus(boolean blockedStatus) {
+            this.blockedStatus = blockedStatus;
+            return this;
+        }
+
+        public Enrollee build(){
+            Enrollee enrollee = new Enrollee();
+            enrollee.setId(id);
+            enrollee.setCity(city);
+            enrollee.setRegion(region);
+            enrollee.setUserId(userId);
+            enrollee.setBlockedStatus(blockedStatus);
+            return enrollee;
+
+        }
+
+
+    }
+
 }

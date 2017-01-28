@@ -47,46 +47,20 @@ public class User extends Entity {
 
     }
 
-
-
     /**
-     * Constructor for user.
-     * @param id
-     * @param email
-     * @param password
-     * @param login
-     * @param firstName
-     * @param lastName
-     * @param role
+     * Getter for the id.
+     * @return int
      */
-    public User(int id,String email, String password,String login, String firstName, String lastName, String role) {
-        super();
-        this.setId(id);
-        this.email = email;
-        this.password = password;
-        this.login = login;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.role = role;
+    public int getId() {
+        return id;
     }
 
     /**
-     * Constructor for user.
-     * @param email
-     * @param password
-     * @param login
-     * @param firstName
-     * @param lastName
-     * @param role
+     * Setter for id.
+     * @param id
      */
-    public User(String email, String password,String login, String firstName, String lastName, String role) {
-        super();
-        this.email = email;
-        this.password = password;
-        this.login = login;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.role = role;
+    public void setId(int id) {
+        this.id = id;
     }
 
     /**
@@ -168,8 +142,6 @@ public class User extends Entity {
         this.role = role;
     }
 
-
-
     /**
      * getter for login.
      * @return
@@ -188,22 +160,76 @@ public class User extends Entity {
     }
 
 
-    public int getId() {
-        return id;
-    }
-
-
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-
 
     @Override
     public String toString() {
         return "User [id=" + id + ", email=" + email + ", password=" + password + ", login=" + login + ", firstName="
                 + firstName + ", lastName=" + lastName + ", role=" + role + "]";
+    }
+
+    /**
+     * class for build class User
+     */
+    public static class Builder{
+
+        private int id;
+        private String email;
+        private String password;
+        private String login;
+        private String firstName;
+        private String  lastName;
+        private String role;
+
+
+        public Builder setId(int id) {
+            this.id = id;
+            return this;
+        }
+
+        public Builder setEmail(String email) {
+            this.email = email;
+            return this;
+        }
+
+        public Builder setPassword(String password) {
+            this.password = password;
+            return this;
+        }
+
+        public Builder setFirstName(String firstName) {
+            this.firstName = firstName;
+            return this;
+        }
+
+        public Builder setLastName(String lastName) {
+            this.lastName = lastName;
+            return this;
+        }
+
+        public Builder setRole(String role) {
+            this.role = role;
+            return this;
+        }
+
+        public Builder setLogin(String login) {
+            this.login = login;
+            return this;
+        }
+
+        public User build() {
+            User user = new User();
+            user.setId(id);
+            user.setEmail(email);
+            user.setPassword(password);
+            user.setFirstName(firstName);
+            user.setLastName(lastName);
+            user.setRole(role);
+            user.setLogin(login);
+
+            return user;
+        }
+
+
     }
 
 }

@@ -84,7 +84,11 @@ public class FacultyDAOImpl implements FacultyDAO {
             pstmt.execute();
             ResultSet rs = pstmt.getResultSet();
             while (rs.next()) {
-                faculty = new Faculty(rs.getString("nameOfFaculty"), rs.getInt("budget_seats"), rs.getInt("total_seats"));
+                faculty = new Faculty.Builder()
+                        .setNameOfFaculty(rs.getString("nameOfFaculty"))
+                        .setBudgetSeats(rs.getInt("budget_seats"))
+                        .setTotalSeats(rs.getInt("total_seats"))
+                        .build();
             }
             pstmt.close();
             rs.close();
@@ -105,7 +109,12 @@ public class FacultyDAOImpl implements FacultyDAO {
             pstmt.execute();
             ResultSet rs = pstmt.getResultSet();
             while (rs.next()) {
-                faculties = new Faculty(rs.getInt("id"), rs.getString("nameOfFaculty"), rs.getInt("budget_seats"), rs.getInt("total_seats"));
+                faculties = new Faculty.Builder()
+                        .setId(rs.getInt("id"))
+                        .setNameOfFaculty(rs.getString("nameOfFaculty"))
+                        .setBudgetSeats(rs.getInt("budget_seats"))
+                        .setTotalSeats(rs.getInt("total_seats"))
+                        .build();
             }
             pstmt.close();
             rs.close();
@@ -125,7 +134,12 @@ public class FacultyDAOImpl implements FacultyDAO {
             pstmt.setInt(1, budgetSeats);
             ResultSet rs = pstmt.executeQuery(Query.SELECT_FACULT_BY_BUDGET_SEATS);
             while (rs.next()) {
-                faculties.add(new Faculty(rs.getString("nameOfFaculty"), rs.getInt("budget_seats"), rs.getInt("total_seats")));
+                faculties.add(new Faculty.Builder()
+                                .setNameOfFaculty(rs.getString("nameOfFaculty"))
+                                .setBudgetSeats(rs.getInt("budget_seats"))
+                                .setTotalSeats(rs.getInt("total_seats"))
+                                .build()
+                );
             }
             pstmt.close();
             rs.close();
@@ -145,7 +159,12 @@ public class FacultyDAOImpl implements FacultyDAO {
             pstmt.setInt(1, totalSeats);
             ResultSet rs = pstmt.executeQuery(Query.SELECT_FACULTY_BY_TOTAL_SEATS);
             while (rs.next()) {
-                faculties.add(new Faculty(rs.getString("nameOfFaculty"), rs.getInt("budget_seats"), rs.getInt("total_seats")));
+                faculties.add(new Faculty.Builder()
+                        .setNameOfFaculty(rs.getString("nameOfFaculty"))
+                        .setBudgetSeats(rs.getInt("budget_seats"))
+                        .setTotalSeats(rs.getInt("total_seats"))
+                        .build()
+                );
             }
             pstmt.close();
             rs.close();
@@ -164,7 +183,13 @@ public class FacultyDAOImpl implements FacultyDAO {
         try (Statement statement = connection.createStatement();
              ResultSet rs = statement.executeQuery(Query.SELECT_ALL_FACULTY)) {
             while (rs.next()) {
-                faculties.add(new Faculty(rs.getInt("id"), rs.getString("nameOfFaculty"), rs.getInt("budget_seats"), rs.getInt("total_seats")));
+                faculties.add(new Faculty.Builder()
+                        .setId(rs.getInt("id"))
+                        .setNameOfFaculty(rs.getString("nameOfFaculty"))
+                        .setBudgetSeats(rs.getInt("budget_seats"))
+                        .setTotalSeats(rs.getInt("total_seats"))
+                        .build()
+                );
 
             }
             statement.close();

@@ -84,8 +84,15 @@ public class UserDAOImpl implements UserDAO {
             pstmt.execute();
             ResultSet rs = pstmt.getResultSet();
             while (rs.next()) {
-                us = new User(rs.getInt("id"), rs.getString("email"), rs.getString("password"), rs.getString("login"),
-                        rs.getString("first_name"), rs.getString("last_name"), rs.getString("role"));
+                us = new User.Builder()
+                        .setId(rs.getInt("id"))
+                        .setEmail(rs.getString("email"))
+                        .setPassword(rs.getString("password"))
+                        .setFirstName(rs.getString("first_name"))
+                        .setLastName(rs.getString("last_name"))
+                        .setLogin(rs.getString("login"))
+                        .setRole(rs.getString("role"))
+                        .build();
             }
         } catch (SQLException e) {
             logger.error("Can't find user by id", e);
@@ -103,8 +110,15 @@ public class UserDAOImpl implements UserDAO {
         try (PreparedStatement pstmt = connection.prepareStatement(Query.SELECT_USER_BY_EMAIL)) {
             pstmt.setString(1, email);
             ResultSet rs = pstmt.executeQuery(Query.SELECT_USER_BY_EMAIL);
-            us = new User(rs.getInt("id"), rs.getString("email"), rs.getString("password"), rs.getString("login"),
-                    rs.getString("first_name"), rs.getString("last_name"), rs.getString("role"));
+            us = new User.Builder()
+                    .setId(rs.getInt("id"))
+                    .setEmail(rs.getString("email"))
+                    .setPassword(rs.getString("password"))
+                    .setFirstName(rs.getString("first_name"))
+                    .setLastName(rs.getString("last_name"))
+                    .setLogin(rs.getString("login"))
+                    .setRole(rs.getString("role"))
+                    .build();
         } catch (SQLException e) {
             logger.error("Can't find user by email", e);
         } finally {
@@ -122,9 +136,15 @@ public class UserDAOImpl implements UserDAO {
             pstmt.setString(1, userRole);
             ResultSet rs = pstmt.executeQuery(Query.SELECT_USER_BY_ROLE);
             while (rs.next()) {
-                users.add(new User(rs.getInt("id"), rs.getString("email"), rs.getString("password"),
-                        rs.getString("login"), rs.getString("first_name"), rs.getString("last_name"),
-                        rs.getString("role")));
+                users.add(new User.Builder()
+                        .setId(rs.getInt("id"))
+                        .setEmail(rs.getString("email"))
+                        .setPassword(rs.getString("password"))
+                        .setFirstName(rs.getString("first_name"))
+                        .setLastName(rs.getString("last_name"))
+                        .setLogin(rs.getString("login"))
+                        .setRole(rs.getString("role"))
+                        .build());
             }
         } catch (SQLException e) {
             logger.error("Can't find user by role", e);
@@ -143,9 +163,16 @@ public class UserDAOImpl implements UserDAO {
         try (Statement statement = connection.createStatement();
              ResultSet rs = statement.executeQuery(Query.SELECT_ALL_USERS)) {
             while (rs.next()) {
-                users.add(new User(rs.getInt("id"), rs.getString("email"), rs.getString("password"),
-                        rs.getString("login"), rs.getString("first_name"), rs.getString("last_name"),
-                        rs.getString("role")));
+                users.add(new User.Builder()
+                        .setId(rs.getInt("id"))
+                        .setEmail(rs.getString("email"))
+                        .setPassword(rs.getString("password"))
+                        .setFirstName(rs.getString("first_name"))
+                        .setLastName(rs.getString("last_name"))
+                        .setLogin(rs.getString("login"))
+                        .setRole(rs.getString("role"))
+                        .build()
+                );
 
             }
         } catch (SQLException e) {
@@ -165,8 +192,15 @@ public class UserDAOImpl implements UserDAO {
         try (PreparedStatement pstmt = connection.prepareStatement(Query.SELECT_USER_BY_FIRSTNAME)) {
             pstmt.setString(1, firstname);
             ResultSet rs = pstmt.executeQuery(Query.SELECT_USER_BY_FIRSTNAME);
-            us = new User(rs.getInt("id"), rs.getString("email"), rs.getString("password"), rs.getString("login"),
-                    rs.getString("first_name"), rs.getString("last_name"), rs.getString("role"));
+            us = new User.Builder()
+                    .setId(rs.getInt("id"))
+                    .setEmail(rs.getString("email"))
+                    .setPassword(rs.getString("password"))
+                    .setFirstName(rs.getString("first_name"))
+                    .setLastName(rs.getString("last_name"))
+                    .setLogin(rs.getString("login"))
+                    .setRole(rs.getString("role"))
+                    .build();
         } catch (SQLException e) {
             logger.error("Can't find user by first name", e);
         } finally {
@@ -183,8 +217,15 @@ public class UserDAOImpl implements UserDAO {
         try (PreparedStatement pstmt = connection.prepareStatement(Query.SELECT_USER_BY_LASTNAME)) {
             pstmt.setString(1, lastName);
             ResultSet rs = pstmt.executeQuery(Query.SELECT_USER_BY_LASTNAME);
-            us = new User(rs.getInt("id"), rs.getString("email"), rs.getString("password"), rs.getString("login"),
-                    rs.getString("first_name"), rs.getString("last_name"), rs.getString("role"));
+            us = new User.Builder()
+                    .setId(rs.getInt("id"))
+                    .setEmail(rs.getString("email"))
+                    .setPassword(rs.getString("password"))
+                    .setFirstName(rs.getString("first_name"))
+                    .setLastName(rs.getString("last_name"))
+                    .setLogin(rs.getString("login"))
+                    .setRole(rs.getString("role"))
+                    .build();
         } catch (SQLException e) {
             logger.error("Can't find user by last name", e);
         } finally {
@@ -216,8 +257,15 @@ public class UserDAOImpl implements UserDAO {
             pstmt.execute();
             ResultSet rs = pstmt.getResultSet();
             if (rs.next()) {
-                user = new User(rs.getInt("id"), rs.getString("email"), rs.getString("password"), rs.getString("login"),
-                        rs.getString("first_name"), rs.getString("last_name"), rs.getString("role"));
+                user = new User.Builder()
+                        .setId(rs.getInt("id"))
+                        .setEmail(rs.getString("email"))
+                        .setPassword(rs.getString("password"))
+                        .setFirstName(rs.getString("first_name"))
+                        .setLastName(rs.getString("last_name"))
+                        .setLogin(rs.getString("login"))
+                        .setRole(rs.getString("role"))
+                        .build();
             }
             rs.close();
         } catch (SQLException e) {

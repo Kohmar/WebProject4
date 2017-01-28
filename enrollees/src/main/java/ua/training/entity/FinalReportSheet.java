@@ -11,28 +11,28 @@ public class FinalReportSheet  extends Entity{
     String city;
     String region;
     String statusOfEducation;
-    Integer summaryPionts;
+    Integer summaryPoints;
 
     public FinalReportSheet(String firstName, String lastName, String city, String region,
-                            Integer summaryPionts, String statusOfEducation) {
+                            Integer summaryPoints, String statusOfEducation) {
         super();
         this.firstName = firstName;
         this.lastName = lastName;
         this.city = city;
         this.region = region;
-        this.summaryPionts = summaryPionts;
+        this.summaryPoints = summaryPoints;
         this.statusOfEducation = statusOfEducation;
 
 
     }
     public FinalReportSheet(Integer id, String firstName, String lastName, String city, String region,
-                            Integer facultyId, Integer summaryPionts) {
+                            Integer facultyId, Integer summaryPoints) {
         super();
         this.firstName = firstName;
         this.lastName = lastName;
         this.city = city;
         this.region = region;
-        this.summaryPionts = summaryPionts;
+        this.summaryPoints = summaryPoints;
     }
 
     public String getFirstName() {
@@ -60,11 +60,11 @@ public class FinalReportSheet  extends Entity{
         this.region = region;
     }
 
-    public Integer getSummaryPionts() {
-        return summaryPionts;
+    public Integer getSummaryPoints() {
+        return summaryPoints;
     }
-    public void setSummaryPionts(Integer summaryPionts) {
-        this.summaryPionts = summaryPionts;
+    public void setSummaryPoints(Integer summaryPoints) {
+        this.summaryPoints = summaryPoints;
     }
 
 
@@ -77,6 +77,8 @@ public class FinalReportSheet  extends Entity{
     @Override
     public String toString() {
         return "FinalReportSheet [id="  + ", firstName=" + firstName + ", lastName=" + lastName + ", city=" + city
-                + ", region=" + region + ", facultyId="  + ", summaryPionts=" + summaryPionts + "]";
+                + ", region=" + region + ", facultyId="  + ", summaryPoints=" + summaryPoints + "]";
     }
+
+
 }

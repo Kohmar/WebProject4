@@ -20,9 +20,6 @@ public class EnrolleeDAOImpl implements EnrolleeDAO {
     Connection connection;
 
 
-    /* (non-Javadoc)
-     * @see ua.nure.osmachko.summarytask4.dao.EnrolleeDAO#getAllEnrollees()
-     */
     @Override
     public List<Enrollee> getAllEnrollees() {
         List<Enrollee> enrolles = new ArrayList<Enrollee>();
@@ -30,7 +27,15 @@ public class EnrolleeDAOImpl implements EnrolleeDAO {
         try (Statement statement = connection.createStatement();
              ResultSet rs = statement.executeQuery(Query.SELECT_ALL_FROM_ENROLLEES)) {
             while (rs.next()) {
-                enrolles.add(new Enrollee(rs.getInt("id"), rs.getString("city"), rs.getString("region"), rs.getInt("User_idUser"), rs.getBoolean("isBlocked")));
+                enrolles.add(new Enrollee.Builder()
+                        .setId(rs.getInt("id"))
+                        .setCity(rs.getString("city"))
+                        .setRegion(rs.getString("region"))
+                        .setUserId(rs.getInt("User_idUser"))
+                        .setBlockedStatus(rs.getBoolean("isBlocked")
+                        )
+                        .build()
+                );
             }
         } catch (SQLException ex) {
             LOG.error("Can't get all Enrollees", ex);
@@ -40,9 +45,6 @@ public class EnrolleeDAOImpl implements EnrolleeDAO {
         return enrolles;
     }
 
-    /* (non-Javadoc)
-     * @see ua.nure.osmachko.summarytask4.dao.EnrolleeDAO#addEnrollee(ua.nure.osmachko.summarytask4.core.entity.Enrollee)
-     */
     @Override
     public void addEnrollee(Enrollee enrollee) {
         connection = ConnectionPool.getConnection();
@@ -59,9 +61,6 @@ public class EnrolleeDAOImpl implements EnrolleeDAO {
         }
     }
 
-    /* (non-Javadoc)
-     * @see ua.nure.osmachko.summarytask4.dao.EnrolleeDAO#deleteEnrollee(java.lang.Integer)
-     */
     @Override
     public boolean deleteEnrollee(Integer enrolleeId) {
         connection = ConnectionPool.getConnection();
@@ -76,9 +75,6 @@ public class EnrolleeDAOImpl implements EnrolleeDAO {
         return true;
     }
 
-    /* (non-Javadoc)
-     * @see ua.nure.osmachko.summarytask4.dao.EnrolleeDAO#updateEnrollee(java.lang.Integer, ua.nure.osmachko.summarytask4.core.entity.Enrollee)
-     */
     @Override
     public boolean updateEnrollee(Integer enrolleId, Enrollee enrollee) {
         connection = ConnectionPool.getConnection();
@@ -97,9 +93,6 @@ public class EnrolleeDAOImpl implements EnrolleeDAO {
         return true;
     }
 
-    /* (non-Javadoc)
-     * @see ua.nure.osmachko.summarytask4.dao.EnrolleeDAO#getEnrollesByCity(java.lang.String)
-     */
     @Override
     public List<Enrollee> getEnrollesByCity(String city) {
         List<Enrollee> enrollees = new ArrayList<Enrollee>();
@@ -108,8 +101,15 @@ public class EnrolleeDAOImpl implements EnrolleeDAO {
             pstmt.setString(1, city);
             ResultSet rs = pstmt.executeQuery(Query.SELECT_ENROLLEE_BY_CITY);
             while (rs.next()) {
-                enrollees.add(new Enrollee(rs.getInt("id"), rs.getString("city"), rs.getString("region"), rs.getInt("User_idUser"),
-                        rs.getBoolean("IsBlocked")));
+                enrollees.add(new Enrollee.Builder()
+                        .setId(rs.getInt("id"))
+                        .setCity(rs.getString("city"))
+                        .setRegion(rs.getString("region"))
+                        .setUserId(rs.getInt("User_idUser"))
+                        .setBlockedStatus(rs.getBoolean("isBlocked")
+                        )
+                        .build()
+                );
             }
         } catch (SQLException e) {
             LOG.error("Can't get Enrollees by City", e);
@@ -142,8 +142,15 @@ public class EnrolleeDAOImpl implements EnrolleeDAO {
             pstmt.setString(1, region);
             ResultSet rs = pstmt.executeQuery(Query.SELECT_ENROLLEE_BY_REGION);
             while (rs.next()) {
-                enrollees.add(new Enrollee(rs.getInt("id"), rs.getString("city"), rs.getString("region"),
-                        rs.getInt("User_idUser"), rs.getBoolean("isBlocked")));
+                enrollees.add(new Enrollee.Builder()
+                        .setId(rs.getInt("id"))
+                        .setCity(rs.getString("city"))
+                        .setRegion(rs.getString("region"))
+                        .setUserId(rs.getInt("User_idUser"))
+                        .setBlockedStatus(rs.getBoolean("isBlocked")
+                        )
+                        .build()
+                );
             }
         } catch (SQLException e) {
             LOG.error("Can't get Enrollees by Region", e);
@@ -161,8 +168,15 @@ public class EnrolleeDAOImpl implements EnrolleeDAO {
             pstmt.setBoolean(1, status);
             ResultSet rs = pstmt.executeQuery(Query.SELECT_ENROLLEE_BY_STATUS);
             while (rs.next()) {
-                enrollees.add(new Enrollee(rs.getInt("id"), rs.getString("city"), rs.getString("region"),
-                        rs.getInt("User_idUser"), rs.getBoolean("isBlocked")));
+                enrollees.add(new Enrollee.Builder()
+                                .setId(rs.getInt("id"))
+                                .setCity(rs.getString("city"))
+                                .setRegion(rs.getString("region"))
+                                .setUserId(rs.getInt("User_idUser"))
+                                .setBlockedStatus(rs.getBoolean("isBlocked")
+                                )
+                                .build()
+                );
             }
         } catch (SQLException e) {
             LOG.error("Can't get Enrollees by Status", e);
@@ -237,8 +251,14 @@ public class EnrolleeDAOImpl implements EnrolleeDAO {
             pstmt.execute();
             ResultSet rs = pstmt.getResultSet();
             while (rs.next()) {
-                enrollee = new Enrollee(rs.getInt("id"), rs.getString("city"), rs.getString("region"),
-                        rs.getInt("User_idUser"), rs.getBoolean("isBlocked"));
+                enrollee = new Enrollee.Builder()
+                        .setId(rs.getInt("id"))
+                        .setCity(rs.getString("city"))
+                        .setRegion(rs.getString("region"))
+                        .setUserId(rs.getInt("User_idUser"))
+                        .setBlockedStatus(rs.getBoolean("isBlocked")
+                        )
+                        .build();
             }
             rs.close();
             pstmt.close();
@@ -260,8 +280,14 @@ public class EnrolleeDAOImpl implements EnrolleeDAO {
             pstmt.execute();
             ResultSet rs = pstmt.getResultSet();
             while (rs.next()) {
-                enrollee = new Enrollee(rs.getInt("id"), rs.getString("city"), rs.getString("region"),
-                        rs.getInt("User_idUser"), rs.getBoolean("isBlocked"));
+                enrollee = new Enrollee.Builder()
+                        .setId(rs.getInt("id"))
+                        .setCity(rs.getString("city"))
+                        .setRegion(rs.getString("region"))
+                        .setUserId(rs.getInt("User_idUser"))
+                        .setBlockedStatus(rs.getBoolean("isBlocked")
+                        )
+                        .build();
             }
             rs.close();
             pstmt.close();
@@ -282,10 +308,11 @@ public class EnrolleeDAOImpl implements EnrolleeDAO {
     public boolean getStatusOfEnrollee(Integer id) {
         boolean b = false;
         connection = ConnectionPool.getConnection();
+        //todo pstmt переименовать переменную b переименовать
         try (PreparedStatement pstmt = connection.prepareStatement("select isBlocked from Enrollee where  id = ?;")) {
             pstmt.setInt(1, id);
             pstmt.execute();
-            ResultSet rs = pstmt.getResultSet();
+            ResultSet rs  = pstmt.getResultSet();
             while (rs.next()) {
                 b = rs.getBoolean("isBlocked");
             }
@@ -309,9 +336,15 @@ public class EnrolleeDAOImpl implements EnrolleeDAO {
             pstmt.execute();
             ResultSet rs = pstmt.getResultSet();
             while (rs.next()) {
-                enrollee = new Enrollee(rs.getInt("id"), rs.getString("city"), rs.getString("region"),
-                        rs.getInt("User_idUser"), rs.getBoolean("isBlocked"));
-            }
+                enrollee = new Enrollee.Builder()
+                        .setId(rs.getInt("id"))
+                        .setCity(rs.getString("city"))
+                        .setRegion(rs.getString("region"))
+                        .setUserId(rs.getInt("User_idUser"))
+                        .setBlockedStatus(rs.getBoolean("isBlocked")
+                        )
+                        .build();
+                }
             pstmt.close();
             rs.close();
             if (enrollee == null) {

@@ -18,9 +18,6 @@ public class SubjectDAOImpl implements SubjectDAO {
 
     private static final Logger LOGGER = Logger.getLogger(SubjectDAOImpl.class);
 
-    /* (non-Javadoc)
-     * @see ua.nure.osmachko.summarytask4.dao.SubjectDAO#findIdSubjectByNameOfSubject(java.lang.String)
-     */
     @Override
     public Integer findIdSubjectByNameOfSubject(String nameOfSubject) {
         LOGGER.trace("finding id subject");

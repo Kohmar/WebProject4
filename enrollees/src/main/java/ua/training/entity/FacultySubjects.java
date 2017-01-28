@@ -26,25 +26,26 @@ public class FacultySubjects extends Entity{
 
     }
 
-    public FacultySubjects(Subject subject, Faculty faculty) {
-        this(subject.getId(), faculty.getId());
-    }
-
-    public FacultySubjects(int subjectId, int facultyId) {
-        super();
-        this.subjectId = subjectId;
-        this.facultyId = facultyId;
-    }
-
-
+    /**
+     *Getter for SubjectId.
+     * @return int
+     */
     public int getSubjectId() {
         return subjectId;
     }
 
+    /**
+     * Setter for SubjectId.
+     * @param subjectId
+     */
     public void setSubjectId(int subjectId) {
         this.subjectId = subjectId;
     }
 
+    /**
+     *Getter for FacultyId.
+     * @return int
+     */
     public int getFacultyId() {
         return facultyId;
     }
@@ -56,5 +57,63 @@ public class FacultySubjects extends Entity{
     public void setFacultyId(int facultyId) {
         this.facultyId = facultyId;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        FacultySubjects that = (FacultySubjects) o;
+
+        if (subjectId != that.subjectId) return false;
+        return facultyId == that.facultyId;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = subjectId;
+        result = 31 * result + facultyId;
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "FacultySubjects{" +
+                "subjectId=" + subjectId +
+                ", facultyId=" + facultyId +
+                '}';
+    }
+
+    /**
+     * class for build class FacultySubjects
+     */
+    public static class Builder{
+
+        private int subjectId;
+        private int facultyId;
+
+        public Builder setSubjectId(int subjectId) {
+            this.subjectId = subjectId;
+            return this;
+        }
+
+        public Builder setFacultyId(int facultyId) {
+            this.facultyId = facultyId;
+            return this;
+        }
+
+        public FacultySubjects build() {
+            FacultySubjects facultySubjects = new FacultySubjects();
+            facultySubjects.setSubjectId(subjectId);
+            facultySubjects.setFacultyId(facultyId);
+
+            return facultySubjects;
+
+        }
+
+
+    }
+
 
 }

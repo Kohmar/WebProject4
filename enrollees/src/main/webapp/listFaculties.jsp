@@ -21,7 +21,9 @@
 </head>
 <body>
 
-
+<h1 class="text-center">
+	Система Приемная комиссия
+</h1>
 
 	<h1 class="text-center">
 		<fmt:message key="faculties_page.list_faculties" />

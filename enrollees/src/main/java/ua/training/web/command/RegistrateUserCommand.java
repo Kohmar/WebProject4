@@ -60,7 +60,14 @@ public class RegistrateUserCommand extends Command{
 		
 		boolean valid = RegistrateUserValidator.validateUserParameters(firstName, lastName, email, password, login);
 		if(valid == true) {
-		User user = new User(email,password,login,firstName,lastName,role);
+		User user = new User.Builder()
+				.setEmail(email)
+				.setPassword(password)
+				.setFirstName(firstName)
+				.setLastName(lastName)
+				.setLogin(login)
+				.setRole(role)
+				.build();
 		UserDAO userdao = new DAOFactoryImpl().getUserDAO();
 		userdao.insertUser(user);
 

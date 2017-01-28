@@ -51,7 +51,11 @@ public class UpdateFacultyCommand extends Command {
 		Integer budgetSeats = Integer.parseInt(request.getParameter("budgetSeats"));
 		Integer totalSeats = Integer.parseInt(request.getParameter("totalSeats"));
 		Integer id = (Integer) request.getSession().getAttribute("idOfFaculty");
-		Faculty faculty = new Faculty(nameOfFaculty,budgetSeats,totalSeats);
+		Faculty faculty = new Faculty.Builder()
+				.setNameOfFaculty(nameOfFaculty)
+				.setBudgetSeats(budgetSeats)
+				.setTotalSeats(totalSeats)
+				.build();
 		LOG.trace("Fields for new Faculty were got" + nameOfFaculty + " " + budgetSeats + " " + totalSeats);
 		FacultyDAO facultydao = new DAOFactoryImpl().getFacultyDAO();
 		facultydao.updateFaculty(id,faculty);

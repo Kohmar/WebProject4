@@ -33,7 +33,7 @@ public class MakeResultOnFacultyCommand extends Command {
 
         @Override
         public int compare(FacultyEnrollee o1, FacultyEnrollee o2) {
-            return o2.getSummaryPionts() - o1.getSummaryPionts();
+            return o2.getsummaryPoints() - o1.getsummaryPoints();
         }
     };
 

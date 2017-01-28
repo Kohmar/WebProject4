@@ -55,13 +55,17 @@ public class RegistrateOnFacultyCommand extends Command {
 		Integer facultyId = Integer.parseInt(request.getParameter("facultyId"));
 		LOG.trace("Fields were got: " + "facultyId = " + facultyId);
 		request.getSession().setAttribute("FacultyId", facultyId);
+		// ничего не замокаю. дао фектори выношу как поле, и сделать сервисы
+		// сделатьс ервися для логики
 		DAOFacultySubjects daofs = new DAOFactoryImpl().getDAOFacultySubjects();
 		LOG.trace("finding subjects by faculty id..");
 		List<Subject> subjects = daofs.findSubjectsByFacultyId(facultyId);
 		request.getSession().setAttribute("subjects", subjects);
 		LOG.trace("subjects were found" + subjects);
 		
-		
+		//todo валидайшены и так далее, лог трейсф лишние
+		// facultyId в контанты
+		//cltkfnm cthdtcs
 		return Path.REDIRECT_TO_SHOW_FACULTY_SUBJECTS;
 	}
 }

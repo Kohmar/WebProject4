@@ -31,7 +31,7 @@ public class WriteFileUtils {
 			out.append("First name: ").append(firstName).append("\r\n");
 			out.append("LastName : " + lastName + "\r\n");
 			out.append("Faculty : " + nameOfFaculty + "\r\n");
-			out.append("Sum of pionts : " + item.getSummaryPionts() + "\r\n");
+			out.append("Sum of points : " + item.getsummaryPoints() + "\r\n");
 			out.append("Status : Budget" + "\r\n");
 			out.append("****************************" + "\r\n");
 			
@@ -58,7 +58,7 @@ public class WriteFileUtils {
 			out.append("First name: " + firstName + "\r\n");
 			out.append("LastName : " + lastName + "\r\n");
 			out.append("Faculty : " + nameOfFaculty + "\r\n");
-			out.append("Sum of pionts : " + item.getSummaryPionts() + "\r\n");
+			out.append("Sum of points : " + item.getsummaryPoints() + "\r\n");
 			out.append("Status : Contract" + "\r\n");
 			out.append("****************************" + "\r\n");
 			
@@ -82,7 +82,7 @@ public class WriteFileUtils {
 			out.append("First name: " + firstName + "\r\n");
 			out.append("LastName : " + lastName + "\r\n");
 			out.append("Faculty : " + nameOfFaculty + "\r\n");
-			out.append("Sum of pionts : " + item.getSummaryPionts() + "\r\n");
+			out.append("Sum of points : " + item.getsummaryPoints() + "\r\n");
 			out.append("Status : Out Of Faculty" + "\r\n");
 			out.append("****************************" + "\r\n");
 			

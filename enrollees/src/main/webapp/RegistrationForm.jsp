@@ -8,7 +8,9 @@
 <%@ include file="/WEB-INF/jspf/head.jspf"%>
 </head>
 <body>
-
+<h1>
+	Система Приемная комиссия
+</h1>
 	<h2>
 		<fmt:message key="registrate.messege" />
 	</h2>

@@ -15,6 +15,23 @@
 
 
 	<form action="controller" method="post">
+		<table class="table table-hover table-striped" title="width:100%">
+			<jsp:useBean id="fe"
+						 class="ua.training.dao.impl.DAOFacultyEnrolleeImpl" />
+
+			<tr>
+				<th><c:out value="Id" /></th>
+				<th><fmt:message key="faculties_page.name_of_faculty" /></th>
+				<th></th>
+				<th></th>
+				<th></th>
+				<th></th>
+				<%-- <th><c:out value="Show Result on faculty"/></th> --%>
+			</tr>
+		</table>
+		<h1>
+			Система Приемная комиссия
+		</h1>
 		<h2>
 			<fmt:message key="login.welcome" />
 		</h2>
